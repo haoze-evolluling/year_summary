@@ -135,9 +135,8 @@ function optimizeParallaxForMobile() {
                 );
                 
                 // 应用轻量级视差
-                // 禁用移动端视差效果
-                // bg.style.transform = `translateY(${visiblePercent * 20}px)`;
-                // bg.style.opacity = 0.5 + (visiblePercent * 0.5);
+                bg.style.transform = `translateY(${visiblePercent * 20}px)`;
+                bg.style.opacity = 0.5 + (visiblePercent * 0.5);
             }
         });
     });
