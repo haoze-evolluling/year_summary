@@ -51,8 +51,6 @@
         border-radius: 3px;
         opacity: 1;
         left: 0;
-        transform: rotate(0deg);
-        transition: .25s ease-in-out;
     }
     
     .hamburger span:nth-child(1) {
@@ -98,18 +96,18 @@
         margin-top: 60px;
     }
     
-    h2.parallax-title {
+    h2 {
         font-size: 1.8rem;
         text-align: center;
     }
     
     /* 段落文本调整 */
-    .intro-text p, .stagger-item {
+    .intro-text p {
         font-size: 0.95rem;
         line-height: 1.6;
     }
     
-    /* 视差效果调整 */
+    /* 视差背景调整 */
     .parallax-bg {
         background-attachment: scroll;
     }
@@ -133,12 +131,6 @@
     .scroll-down-indicator {
         bottom: 20px;
     }
-    
-    /* 动画效果调整，停用移动端上的浮动效果 */
-    .float-image {
-        animation: none;
-        transform: translateY(0);
-    }
 }
 
 /* 小屏手机适配 */
@@ -151,11 +143,11 @@
         font-size: 1rem;
     }
     
-    h2.parallax-title {
+    h2 {
         font-size: 1.5rem;
     }
     
-    .intro-text p, .stagger-item {
+    p {
         font-size: 0.9rem;
     }
 }
@@ -171,11 +163,7 @@ img {
     height: auto;
 }
 
-/* 触摸设备的优化 */
-.tilt-card {
-    transform: none !important;
-}
-
+/* 隐藏额外效果 */
 .shine-effect {
     display: none;
 } 

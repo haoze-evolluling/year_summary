@@ -5,7 +5,6 @@
     --accent-color: #0071e3;
     --background-color: #fff;
     --section-padding: 100px 20px;
-    --transition-speed: 0.5s;
 }
 
 * {
@@ -15,7 +14,7 @@
 }
 
 html {
-    scroll-behavior: smooth;
+    scroll-behavior: auto;
     scroll-padding-top: 80px;
 }
 
@@ -25,7 +24,6 @@ body {
     background-color: var(--background-color);
     line-height: 1.6;
     overflow-x: hidden;
-    perspective: 2000px;  /* 增强3D效果的perspective值 */
 }
 
 /* 进度条 */
@@ -42,7 +40,6 @@ body {
     height: 3px;
     background: var(--accent-color);
     width: 0%;
-    transition: width 0.1s ease;
     box-shadow: 0 0 10px rgba(0, 113, 227, 0.7);
 }
 
@@ -56,7 +53,6 @@ header {
     backdrop-filter: blur(10px);
     -webkit-backdrop-filter: blur(10px);
     background-color: rgba(255, 255, 255, 0.8);
-    transition: all 0.3s ease;
 }
 
 nav {
@@ -74,7 +70,6 @@ nav {
     font-weight: 700;
     color: var(--primary-color);
     position: relative;
-    transition: all 0.3s ease;
 }
 
 .logo::after {
@@ -85,7 +80,6 @@ nav {
     width: 0;
     height: 2px;
     background-color: var(--accent-color);
-    transition: width 0.3s ease;
 }
 
 .logo:hover::after {
@@ -102,7 +96,6 @@ nav {
     text-decoration: none;
     font-size: 0.9rem;
     font-weight: 500;
-    transition: all 0.3s ease;
     position: relative;
     padding: 5px 0;
 }
@@ -115,7 +108,6 @@ nav {
     width: 0;
     height: 2px;
     background-color: var(--accent-color);
-    transition: width 0.3s ease;
 }
 
 .nav-links a:hover {
@@ -149,8 +141,6 @@ main {
     padding: var(--section-padding);
     position: relative;
     overflow: hidden;
-    transition: transform 0.8s cubic-bezier(0.19, 1, 0.22, 1);
-    transform-style: preserve-3d; /* 启用3D空间 */
 }
 
 .section::before {
@@ -162,7 +152,6 @@ main {
     height: 100%;
     background: radial-gradient(circle at center, rgba(255,255,255,0.01) 0%, rgba(255,255,255,0) 70%);
     opacity: 0;
-    transition: opacity 0.5s ease;
     pointer-events: none;
     z-index: 0;
 }
@@ -177,7 +166,6 @@ main {
     margin: 0 auto;
     position: relative;
     z-index: 1;
-    transform-style: preserve-3d; /* 启用3D空间 */
 }
 
 /* 首页部分 */
@@ -202,16 +190,12 @@ main {
     height: 100%;
     background: radial-gradient(circle at center, rgba(0, 113, 227, 0.05) 0%, rgba(255,255,255,0) 70%);
     z-index: 0;
-    animation: pulse 8s infinite alternate;
 }
 
 .title {
     font-size: 3.5rem;
     font-weight: 700;
     margin-bottom: 1rem;
-    opacity: 0;
-    transform: translateY(20px);
-    animation: fadeInUp 1s forwards;
     position: relative;
     z-index: 1;
 }
@@ -221,9 +205,6 @@ main {
     font-weight: 400;
     color: var(--accent-color);
     margin-bottom: 2rem;
-    opacity: 0;
-    transform: translateY(20px);
-    animation: fadeInUp 1s forwards 0.3s;
     position: relative;
     z-index: 1;
 }
@@ -231,9 +212,6 @@ main {
 .intro-text {
     max-width: 800px;
     margin: 0 auto 3rem;
-    opacity: 0;
-    transform: translateY(20px);
-    animation: fadeInUp 1s forwards 0.6s;
     position: relative;
     z-index: 1;
 }
@@ -243,16 +221,7 @@ main {
     display: flex;
     align-items: center;
     gap: 4rem;
-    opacity: 0;
-    transform: translateY(40px) rotateX(5deg);
-    transition: all 1s cubic-bezier(0.19, 1, 0.22, 1);
     position: relative;
-    transform-style: preserve-3d; /* 增强3D效果 */
-}
-
-.month-container.active {
-    opacity: 1;
-    transform: translateY(0) rotateX(0);
 }
 
 .month-container.reverse {
@@ -263,7 +232,6 @@ main {
     flex: 1;
     position: relative;
     z-index: 2;
-    transition: transform 0.5s ease;
 }
 
 .image-container {
@@ -272,42 +240,6 @@ main {
     overflow: hidden;
     border-radius: 10px;
     box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
-    transform: translateZ(0);
-    transition: all 0.5s cubic-bezier(0.19, 1, 0.22, 1);
-    transform-style: preserve-3d;
-    opacity: 0; /* 初始不可见 */
-}
-
-.month-container .image-container {
-    transform: translateX(-100px) scale(0.8); /* 左侧初始位置 */
-}
-
-.month-container.reverse .image-container {
-    transform: translateX(100px) scale(0.8); /* 右侧初始位置 */
-}
-
-.month-container.active .image-container {
-    opacity: 1;
-    transform: translateZ(20px); /* 激活后的位置 */
-    animation: flyInLeft 1.2s cubic-bezier(0.19, 1, 0.22, 1) forwards;
-}
-
-.month-container.reverse.active .image-container {
-    animation: flyInRight 1.2s cubic-bezier(0.19, 1, 0.22, 1) forwards;
-}
-
-/* 激活后的悬浮动画，在飞入后应用 */
-.month-container.active .image-container.animation-complete {
-    animation: float 6s ease-in-out infinite;
-}
-
-.month-container:hover .text-content {
-    transform: translateX(10px);
-}
-
-.month-container:hover .image-container {
-    transform: translateZ(30px) scale(1.02);
-    box-shadow: 0 15px 40px rgba(0, 0, 0, 0.15);
 }
 
 .image-container::after {
@@ -323,7 +255,6 @@ main {
         transparent 60%
     );
     opacity: 0;
-    transition: opacity 0.5s ease;
     z-index: 1;
 }
 
@@ -334,16 +265,7 @@ main {
 .image-container img {
     width: 100%;
     height: auto;
-    transition: all 0.8s cubic-bezier(0.19, 1, 0.22, 1);
-    transform: scale(1);
-    filter: brightness(1);
-    transform-style: preserve-3d;
-    display: block; /* 确保图片正常显示 */
-}
-
-.image-container:hover img {
-    transform: scale(1.05);
-    filter: brightness(1.05);
+    display: block;
 }
 
 h2 {
@@ -352,8 +274,6 @@ h2 {
     margin-bottom: 1.5rem;
     position: relative;
     display: inline-block;
-    transform: translateZ(0);
-    transition: transform 0.3s ease;
 }
 
 h2::after {
@@ -364,8 +284,6 @@ h2::after {
     width: 50px;
     height: 4px;
     background-color: var(--accent-color);
-    transition: width 0.5s cubic-bezier(0.19, 1, 0.22, 1);
-    transform-origin: left center;
 }
 
 .month-container:hover h2::after {
@@ -376,7 +294,6 @@ p {
     margin-bottom: 1rem;
     line-height: 1.8;
     opacity: 0.9;
-    transform: translateZ(0);
 }
 
 .quote {
@@ -387,7 +304,6 @@ p {
     margin-top: 2rem;
     position: relative;
     opacity: 0.9;
-    transition: all 0.5s ease;
     font-size: 1.25rem;
     font-weight: 500;
 }
@@ -401,12 +317,6 @@ p {
     font-style: normal;
     color: rgba(0, 113, 227, 0.1);
     z-index: -1;
-    transition: transform 0.5s ease;
-    transform-origin: right;
-}
-
-.month-container:hover .quote::after {
-    transform: translateY(-5px) scale(1.1);
 }
 
 footer {
@@ -434,52 +344,7 @@ footer::before {
     z-index: 0;
 }
 
-@keyframes fadeInUp {
-    from {
-        opacity: 0;
-        transform: translateY(20px);
-    }
-    to {
-        opacity: 1;
-        transform: translateY(0);
-    }
-}
-
-@keyframes fadeIn {
-    from {
-        opacity: 0;
-    }
-    to {
-        opacity: 1;
-    }
-}
-
-@keyframes pulse {
-    0% {
-        opacity: 0.3;
-        transform: scale(1);
-    }
-    50% {
-        opacity: 0.5;
-        transform: scale(1.05);
-    }
-    100% {
-        opacity: 0.3;
-        transform: scale(1);
-    }
-}
-
-.fade-in {
-    opacity: 0;
-    transform: translateY(30px);
-    transition: all 0.8s cubic-bezier(0.19, 1, 0.22, 1);
-}
-
-.fade-in.active {
-    opacity: 1;
-    transform: translateY(0);
-}
-
+/* 滚动下箭头指示器 - 简化版 */
 .scroll-down-indicator {
     position: absolute;
     bottom: 30px;
@@ -493,17 +358,6 @@ footer::before {
     position: relative;
     width: 28px;
     height: 1px;
-    opacity: 0;
-    transform: scale(0.3);
-    animation: move-chevron 3s ease-out infinite;
-}
-
-.chevron:first-child {
-    animation-delay: 0s;
-}
-
-.chevron:nth-child(2) {
-    animation-delay: 0.5s;
 }
 
 .chevron:before,
@@ -526,26 +380,7 @@ footer::before {
     transform: skewY(-30deg);
 }
 
-@keyframes move-chevron {
-    25% {
-        opacity: 1;
-        transform: translateY(10px) scale(0.8);
-    }
-    33% {
-        opacity: 1;
-        transform: translateY(20px) scale(0.9);
-    }
-    67% {
-        opacity: 1;
-        transform: translateY(30px) scale(0.9);
-    }
-    100% {
-        opacity: 0;
-        transform: translateY(40px) scale(0.9);
-    }
-}
-
-/* 视差背景增强 */
+/* 视差背景 - 简化 */
 .parallax-bg {
     position: absolute;
     top: 0;
@@ -554,64 +389,6 @@ footer::before {
     height: 100%;
     z-index: -1;
     overflow: hidden;
-    transform-style: preserve-3d;
-}
-
-.parallax-dot {
-    position: absolute;
-    background-color: var(--accent-color);
-    border-radius: 50%;
-    transform: translateZ(0);
-    pointer-events: none;
-}
-
-/* 3D卡片效果 - 简化为静态效果 */
-.tilt-card {
-    transition: transform 0.5s ease;
-    transform-style: preserve-3d;
-}
-
-/* 滚动时的图片动画 */
-@keyframes float {
-    0% {
-        transform: translateZ(20px) translateY(0px);
-    }
-    50% {
-        transform: translateZ(20px) translateY(-10px);
-    }
-    100% {
-        transform: translateZ(20px) translateY(0px);
-    }
-}
-
-/* 滚动触发的内容旋转 */
-@keyframes rotateIn {
-    from {
-        opacity: 0;
-        transform: rotateY(10deg) translateZ(-50px);
-    }
-    to {
-        opacity: 1;
-        transform: rotateY(0) translateZ(0);
-    }
-}
-
-.rotate-in {
-    opacity: 0;
-    transform: rotateY(10deg) translateZ(-50px);
-    transition: all 1.2s cubic-bezier(0.19, 1, 0.22, 1);
-}
-
-.rotate-in.active {
-    opacity: 1;
-    transform: rotateY(0) translateZ(0);
-}
-
-/* 滚动时的3D视差效果 */
-.parallax-scroll {
-    will-change: transform;
-    transform: translateZ(0);
-    transition: transform 0.2s cubic-bezier(0.19, 1, 0.22, 1);
 }
 
 /* 响应式设计部分 */
@@ -623,10 +400,6 @@ footer::before {
     .month-container, .month-container.reverse {
         flex-direction: column;
         gap: 2rem;
-    }
-    
-    .month-container.reverse .image-container {
-        transform: none;
     }
     
     .title {
@@ -666,166 +439,4 @@ footer::before {
     p {
         font-size: 0.9rem;
     }
-}
-
-/* 鼠标悬停时的光效 */
-.shine-effect {
-    position: absolute;
-    top: -50%;
-    left: -50%;
-    width: 200%;
-    height: 200%;
-    background: linear-gradient(
-        45deg,
-        rgba(255, 255, 255, 0) 0%,
-        rgba(255, 255, 255, 0.05) 25%,
-        rgba(255, 255, 255, 0.2) 50%,
-        rgba(255, 255, 255, 0.05) 75%,
-        rgba(255, 255, 255, 0) 100%
-    );
-    transform: rotate(45deg);
-    pointer-events: none;
-    z-index: 2;
-    opacity: 0;
-    transition: opacity 0.5s ease;
-}
-
-.image-container:hover .shine-effect {
-    animation: shine 1.5s forwards;
-}
-
-@keyframes shine {
-    0% {
-        opacity: 1;
-        transform: rotate(45deg) translateX(-100%);
-    }
-    100% {
-        opacity: 0;
-        transform: rotate(45deg) translateX(100%);
-    }
-}
-
-/* 滚动时的交错动画效果 */
-.stagger-item {
-    opacity: 0;
-    transform: translateY(30px);
-    transition: opacity 0.8s ease, transform 0.8s cubic-bezier(0.19, 1, 0.22, 1);
-}
-
-.stagger-item.active {
-    opacity: 1;
-    transform: translateY(0);
-}
-
-/* 视差滚动标题效果 */
-.parallax-title {
-    position: relative;
-    transform: translateZ(0);
-    transition: transform 0.5s cubic-bezier(0.19, 1, 0.22, 1);
-}
-
-/* 滚动时图片浮出效果 */
-.float-image {
-    transition: transform 1s cubic-bezier(0.19, 1, 0.22, 1);
-    transform: translateZ(0);
-}
-
-.float-image.active {
-    transform: translateZ(30px);
-}
-
-/* 从左侧飞入动画 */
-@keyframes flyInLeft {
-    0% {
-        opacity: 0;
-        transform: translateX(-100px) translateZ(0) scale(0.8);
-    }
-    100% {
-        opacity: 1;
-        transform: translateX(0) translateZ(20px) scale(1);
-    }
-}
-
-/* 从右侧飞入动画 */
-@keyframes flyInRight {
-    0% {
-        opacity: 0;
-        transform: translateX(100px) translateZ(0) scale(0.8);
-    }
-    100% {
-        opacity: 1;
-        transform: translateX(0) translateZ(20px) scale(1);
-    }
-}
-
-/* 反向动画类 - 月份容器 */
-.month-container.reverse-active {
-    opacity: 1;
-    transform: translateY(0) rotateX(0);
-}
-
-/* 反向动画类 - 从左侧收回 */
-@keyframes flyOutLeft {
-    0% {
-        opacity: 1;
-        transform: translateX(0) translateZ(20px) scale(1);
-    }
-    100% {
-        opacity: 0;
-        transform: translateX(-100px) translateZ(0) scale(0.8);
-    }
-}
-
-/* 反向动画类 - 从右侧收回 */
-@keyframes flyOutRight {
-    0% {
-        opacity: 1;
-        transform: translateX(0) translateZ(20px) scale(1);
-    }
-    100% {
-        opacity: 0;
-        transform: translateX(100px) translateZ(0) scale(0.8);
-    }
-}
-
-/* 向上滚动时的动画 */
-.month-container.reverse-active .image-container {
-    opacity: 1;
-    animation: flyOutLeft 1.2s cubic-bezier(0.19, 1, 0.22, 1) forwards;
-}
-
-.month-container.reverse.reverse-active .image-container {
-    animation: flyOutRight 1.2s cubic-bezier(0.19, 1, 0.22, 1) forwards;
-}
-
-/* 反向淡入淡出 */
-.fade-in.reverse-active {
-    opacity: 0;
-    transform: translateY(30px);
-}
-
-/* 反向旋转 */
-.rotate-in.reverse-active {
-    opacity: 0;
-    transform: rotateY(10deg) translateZ(-50px);
-}
-
-/* 反向浮动 */
-.float-image.reverse-active {
-    transform: translateZ(0);
-}
-
-/* 反向交错动画 */
-.stagger-item.reverse-active {
-    opacity: 0;
-    transform: translateY(30px);
-}
-
-/* 向上/向下滚动的区块状态 */
-.section.scroll-down {
-    transition: transform 0.8s cubic-bezier(0.19, 1, 0.22, 1);
-}
-
-.section.scroll-up {
-    transition: transform 0.8s cubic-bezier(0.19, 1, 0.22, 1);
 } 
