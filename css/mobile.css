@@ -134,21 +134,10 @@
         bottom: 20px;
     }
     
-    /* 动画效果调整，使其更加轻量 */
+    /* 动画效果调整，停用移动端上的浮动效果 */
     .float-image {
-        animation: float 5s ease-in-out infinite;
-    }
-    
-    @keyframes float {
-        0% {
-            transform: translateY(0px);
-        }
-        50% {
-            transform: translateY(-10px);
-        }
-        100% {
-            transform: translateY(0px);
-        }
+        animation: none;
+        transform: translateY(0);
     }
 }
 
