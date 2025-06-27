@@ -1,0 +1,192 @@
+/* mobile.css - 移动端适配样式 */
+
+/* 基础移动端适配 */
+@media screen and (max-width: 768px) {
+    /* 导航栏调整 */
+    header nav {
+        flex-direction: column;
+        padding: 10px;
+    }
+    
+    .nav-links {
+        flex-direction: column;
+        width: 100%;
+        display: none;
+        position: absolute;
+        top: 60px;
+        left: 0;
+        background-color: rgba(0, 0, 0, 0.9);
+        z-index: 100;
+    }
+    
+    .nav-links.mobile-open {
+        display: flex;
+    }
+    
+    .nav-links a {
+        padding: 15px;
+        width: 100%;
+        text-align: center;
+        border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+    }
+    
+    /* 添加汉堡菜单按钮 */
+    .hamburger {
+        display: block;
+        position: absolute;
+        right: 20px;
+        top: 15px;
+        width: 30px;
+        height: 22px;
+        cursor: pointer;
+        z-index: 101;
+    }
+    
+    .hamburger span {
+        display: block;
+        position: absolute;
+        height: 3px;
+        width: 100%;
+        background: white;
+        border-radius: 3px;
+        opacity: 1;
+        left: 0;
+        transform: rotate(0deg);
+        transition: .25s ease-in-out;
+    }
+    
+    .hamburger span:nth-child(1) {
+        top: 0px;
+    }
+    
+    .hamburger span:nth-child(2) {
+        top: 10px;
+    }
+    
+    .hamburger span:nth-child(3) {
+        top: 20px;
+    }
+    
+    /* 内容区域调整 */
+    .section .content {
+        padding: 30px 15px;
+        max-width: 100%;
+    }
+    
+    .month-container {
+        flex-direction: column;
+    }
+    
+    .month-container.reverse {
+        flex-direction: column;
+    }
+    
+    .text-content, .image-container {
+        width: 100%;
+    }
+    
+    .image-container {
+        margin-top: 20px;
+        max-width: 90%;
+        margin-left: auto;
+        margin-right: auto;
+    }
+    
+    /* 标题调整 */
+    h1.title {
+        font-size: 2rem;
+        margin-top: 60px;
+    }
+    
+    h2.parallax-title {
+        font-size: 1.8rem;
+        text-align: center;
+    }
+    
+    /* 段落文本调整 */
+    .intro-text p, .stagger-item {
+        font-size: 0.95rem;
+        line-height: 1.6;
+    }
+    
+    /* 视差效果调整 */
+    .parallax-bg {
+        background-attachment: scroll;
+    }
+    
+    /* 全屏区域调整 */
+    .full-screen {
+        height: 100vh;
+    }
+    
+    /* 进度条调整 */
+    .progress-container {
+        height: 4px;
+    }
+    
+    /* 页脚调整 */
+    footer {
+        padding: 15px;
+    }
+    
+    /* 下拉提示符调整 */
+    .scroll-down-indicator {
+        bottom: 20px;
+    }
+    
+    /* 动画效果调整，使其更加轻量 */
+    .float-image {
+        animation: float 5s ease-in-out infinite;
+    }
+    
+    @keyframes float {
+        0% {
+            transform: translateY(0px);
+        }
+        50% {
+            transform: translateY(-10px);
+        }
+        100% {
+            transform: translateY(0px);
+        }
+    }
+}
+
+/* 小屏手机适配 */
+@media screen and (max-width: 480px) {
+    h1.title {
+        font-size: 1.7rem;
+    }
+    
+    .subtitle {
+        font-size: 1rem;
+    }
+    
+    h2.parallax-title {
+        font-size: 1.5rem;
+    }
+    
+    .intro-text p, .stagger-item {
+        font-size: 0.9rem;
+    }
+}
+
+/* 防止元素溢出 */
+* {
+    box-sizing: border-box;
+    max-width: 100%;
+}
+
+img {
+    max-width: 100%;
+    height: auto;
+}
+
+/* 触摸设备的优化 */
+.tilt-card {
+    transform: none !important;
+}
+
+.shine-effect {
+    display: none;
+} 
