@@ -49,17 +49,6 @@ document.addEventListener('DOMContentLoaded', function() {
         });
     });
     
-    // 滚动指示器点击事件
-    document.querySelector('.scroll-down-indicator').addEventListener('click', function() {
-        const nextSection = document.getElementById('feb');
-        if (nextSection) {
-            window.scrollTo({
-                top: nextSection.offsetTop - 70,
-                behavior: 'smooth'
-            });
-        }
-    });
-    
     // 更新当前活动导航项
     function updateActiveNavLink() {
         const scrollPosition = window.pageYOffset + 100;

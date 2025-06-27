@@ -1,0 +1,163 @@
+/* 滚动动画效果 */
+.image-container {
+    opacity: 0;
+    transform: translateX(0);
+    transition: transform 1s cubic-bezier(0.33, 1, 0.68, 1), 
+                opacity 1s cubic-bezier(0.33, 1, 0.68, 1);
+    will-change: transform, opacity; /* 优化性能 */
+    backface-visibility: hidden; /* 防止闪烁 */
+    perspective: 1000px; /* 提高渲染性能 */
+}
+
+/* 从左侧滑入的图片 */
+.slide-from-left {
+    transform: translateX(-80px);
+    transition-delay: 0.1s;
+}
+
+/* 从右侧滑入的图片 */
+.slide-from-right {
+    transform: translateX(80px);
+    transition-delay: 0.1s;
+}
+
+/* 当元素可见时显示动画效果 */
+.image-container.visible {
+    opacity: 1;
+    transform: translateX(0);
+    transition: transform 1.2s cubic-bezier(0.16, 1, 0.3, 1), 
+                opacity 1.2s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+/* 标题动画效果 */
+h2 {
+    opacity: 0;
+    transform: translateY(20px);
+    transition: opacity 0.9s cubic-bezier(0.16, 1, 0.3, 1), 
+                transform 0.8s cubic-bezier(0.16, 1, 0.3, 1);
+    margin-bottom: 1rem !important;
+}
+
+h2.visible {
+    opacity: 1;
+    transform: translateY(0);
+}
+
+/* 段落文本动画 */
+.text-content p {
+    opacity: 0;
+    transform: translateY(20px);
+    transition: opacity 0.9s cubic-bezier(0.16, 1, 0.3, 1), 
+                transform 0.9s cubic-bezier(0.16, 1, 0.3, 1);
+    margin-bottom: 0.8rem !important;
+}
+
+.text-content p.visible {
+    opacity: 1;
+    transform: translateY(0);
+}
+
+/* 为段落添加延迟动画 */
+.text-content p:nth-child(2) {
+    transition-delay: 0.15s;
+}
+
+.text-content p:nth-child(3) {
+    transition-delay: 0.25s;
+}
+
+/* 增强进度条效果 */
+.progress-bar {
+    transition: width 0.3s ease-out;
+    box-shadow: 0 0 12px rgba(0, 113, 227, 0.8);
+}
+
+/* 导航栏悬停动画优化 */
+.nav-links a::after {
+    transition: width 0.3s ease-in-out;
+}
+
+/* 段落引用动画 */
+.quote {
+    position: relative;
+    opacity: 0;
+    transform: scale(0.95);
+    transition: all 1s ease;
+}
+
+.quote.visible {
+    opacity: 1;
+    transform: scale(1);
+}
+
+/* 整个内容块动画 */
+.month-container {
+    transform-origin: center;
+    transition: transform 0.6s cubic-bezier(0.34, 1.56, 0.64, 1);
+    opacity: 0;
+}
+
+.month-container.visible {
+    opacity: 1;
+    transition: opacity 0.8s cubic-bezier(0.16, 1, 0.3, 1),
+                transform 0.6s cubic-bezier(0.34, 1.56, 0.64, 1);
+}
+
+.month-container:hover {
+    transform: scale(1.01);
+}
+
+/* 增加标题悬停特效 */
+h2 {
+    position: relative;
+    display: inline-block;
+}
+
+h2::before {
+    content: '';
+    position: absolute;
+    bottom: -5px;
+    left: 0;
+    width: 0;
+    height: 2px;
+    background-color: var(--accent-color);
+    transition: width 0.3s ease;
+}
+
+h2:hover::before {
+    width: 100%;
+}
+
+/* 确保在移动设备上不应用动画效果或使用简化的动画 */
+@media (max-width: 768px) {
+    .image-container {
+        opacity: 1;
+        transform: none;
+        transition: transform 0.6s cubic-bezier(0.33, 1, 0.68, 1), 
+                    opacity 0.6s cubic-bezier(0.33, 1, 0.68, 1);
+    }
+    
+    .slide-from-left, .slide-from-right {
+        transform: translateX(0);
+        transition-delay: 0;
+    }
+    
+    h2, .text-content p, .quote, .month-container {
+        opacity: 1;
+        transform: none;
+        transition-delay: 0s;
+    }
+    
+    .month-container:hover {
+        transform: none;
+    }
+    
+    h2::before {
+        display: none;
+    }
+}
+
+/* 添加缓冲值，避免图片滚动时突兀 */
+.section {
+    overflow-x: hidden; /* 防止横向溢出 */
+} 

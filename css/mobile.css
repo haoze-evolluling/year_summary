@@ -126,11 +126,6 @@
     footer {
         padding: 15px;
     }
-    
-    /* 下拉提示符调整 */
-    .scroll-down-indicator {
-        bottom: 20px;
-    }
 }
 
 /* 小屏手机适配 */
