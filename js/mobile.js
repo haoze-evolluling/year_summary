@@ -135,8 +135,9 @@ function optimizeParallaxForMobile() {
                 );
                 
                 // 应用轻量级视差
-                bg.style.transform = `translateY(${visiblePercent * 20}px)`;
-                bg.style.opacity = 0.5 + (visiblePercent * 0.5);
+                // 禁用移动端视差效果
+                // bg.style.transform = `translateY(${visiblePercent * 20}px)`;
+                // bg.style.opacity = 0.5 + (visiblePercent * 0.5);
             }
         });
     });
@@ -218,4 +219,4 @@ window.addEventListener('resize', function() {
         document.body.classList.remove('mobile-device');
         // 这里可以添加移除移动端特有元素的代码，比如汉堡菜单
     }
-}); 
+});
